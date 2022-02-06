@@ -1,0 +1,32 @@
+<form action="action_page.php">
+<link rel="stylesheet" type="text/css" href="style.css" />
+  <div class="container">
+    <h1 style = "position:center;bottom:320px;font-size:50px;font-family:Cambria">Dietary Restrictions</h1>
+    <p>Hi there! Before you go look for an awesome recipe to cook, we need to know more about you!
+    Please fill out this form to let us know how to cater to your dietary needs and restrictions.</p>
+    <hr>
+
+
+    <label for="dietTypes" >Diet Type:</label>
+    <select name="diets" id="diets">
+      <option value="noRest">No Restrictions</option>
+      <option value="vegt">Vegetarian</option>
+      <option value="vegan">Vegan</option>
+      <option value="noPork">No Pork</option>
+      <option value="noBeef">No Beef</option>
+    </select>
+    
+    <a style = "postition:absolute;bottom:530px;left:1080px" href = "getMeal.html"><button type="button" onclick = "getOption()" class="nextBtn">Next</button></a>
+    <a style = "position:absolute;bottom:530px;right:1100px" href = "index.html"><button type="button" class="cancelbtn">Home</button></a>
+
+<script type="text/javascript">
+    function getOption() {
+        selectElement = document.querySelector('#diets');
+        output = selectElement.value;
+        document.querySelector('.output').textContent = output;
+    }
+</script>
+    
+<script src = "restriction.js"></script>
+
+    

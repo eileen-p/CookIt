@@ -5,6 +5,7 @@ This website randomly generates a recipe for you to cook based on your dietary r
 ## What is this project?
 
 *This website is not fully functioning/complete*
+
 My team and I wanted to create a website that encouraged other people to cook, learn, and experience different types of foods from around the world. This website makes it easy for anyone to find a recipe whenever they want. 
 This website filters recipes based on people's dietary restrictions and generates a random recipe so it is faster and easier to find a meal that fits their needs.
 
@@ -15,6 +16,7 @@ We built it on Glitch using HTML, JavaScript, and CSS.
 ## We built this with Glitch!
 
 [Glitch](https://glitch.com) is a friendly community where millions of people come together to build web apps and websites. 
+
 We used code from https://www.florin-pop.com/blog/2019/09/random-meal-generator, https://w3schools.com, and https://geeksforgeeks.com
 
 ## The Team

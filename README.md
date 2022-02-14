@@ -7,7 +7,7 @@ This website randomly generates a recipe for you to cook based on your dietary r
 *This website is not fully functioning/complete*
 
 My team and I wanted to create a website that encouraged other people to cook, learn, and experience different types of foods from around the world. This website makes it easy for anyone to find a recipe whenever they want. 
-This website filters recipes based on people's dietary restrictions and generates a random recipe so it is faster and easier to find a meal that fits their needs.
+It filters recipes based on people's dietary restrictions and generates a random recipe so it is faster and easier to find a meal that fits their needs.
 
 ## How did we build this project?
 

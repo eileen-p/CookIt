@@ -1,5 +1,7 @@
 # Cook It!
 
+https://cook-it-streak.glitch.me/
+
 This website randomly generates a recipe for you to cook based on your dietary restrictions and preferences! It's a fun way to encourage more people, especially college students, to cook for themselves and experience new foods.
 
 ## What is this project?

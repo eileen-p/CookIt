@@ -1,79 +1,69 @@
-const get_meal_btn = document.getElementById('get_meal');
-const meal_container = document.getElementById('meal');
+const get_meal_btn = document.getElementById("get_meal");
+const meal_container = document.getElementById("meal");
 
-get_meal_btn.addEventListener('click', getMealCallback);
+get_meal_btn.addEventListener("click", getMealCallback);
 
-function getMealCallback(){
-/*
-  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-		.then(res => res.json())
-    .then(res => console.log(res))
-	//	.then(res => {
-	//		createMeal(res.meals[0]);
-	//	})
-		.catch(e => {
-			console.warn(e);
-		});
-*/
-  var xttp  = new XMLHttpRequest(); 
-  xttp.open("GET", 'https://www.themealdb.com/api/json/v1/1/random.php');
-  xttp.onreadystatechange = function(){
-    if (this.readyState === 4 && this.status === 200){
-      let response = JSON.parse(xttp.responseText); 
+function getMealCallback() {
+  var xttp = new XMLHttpRequest();
+  xttp.open("GET", "https://www.themealdb.com/api/json/v1/1/random.php");
+  xttp.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      let response = JSON.parse(xttp.responseText);
       createMeal(response.meals[0]);
-      console.log(response); 
+      console.log(response);
     }
-  };  
-  xttp.send(); 
+  };
+  xttp.send();
   console.log("Hello world");
 }
-/* 
-function createMeal(meal){
-  meal_container.innerHTML = `
+
+function createMeal(meal) {
+  const ingredients = [];
+  // Get all ingredients from the object. Up to 20
+  for (let i = 1; i <= 20; i++) {
+    if (meal[`strIngredient${i}`]) {
+      ingredients.push(
+        `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
+      );
+    } else {
+      // Stop if there are no more ingredients
+      break;
+    }
+  }
+
+  const newInnerHTML = `
+		    
+    <a
+        style="position: absolute; bottom: 530px; right: 1100px"
+        href="index.html"
+        ><button type="button" class="cancelbtn">Home</button></a
+    >
+    
+    <a
+        style="position: relative; bottom: 9px; left: 300px"
+        href="foodRestrictions.html"
+        ><button type="button" class="button-primary" id="get_meal">Get Another Meal 🍔</button></a
+    >
+      
     <div class="row">
-        <div class="column five">
-            <img src = "${meal.strMealThumb}" alt="Meal Img" />
-        </div>
-        
-    </div>
-  `;
-}
-*/
-
-function createMeal(meal){
-	const ingredients = [];
-	// Get all ingredients from the object. Up to 20
-	for (let i = 1; i <= 20; i++) {
-		if (meal[`strIngredient${i}`]) {
-			ingredients.push(
-				`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
-			);
-		} else {
-			// Stop if there are no more ingredients
-			break;
-		}
-	}
-
-	const newInnerHTML = `
-		<div class="row">
 			<div class="columns five">
 				<img src="${meal.strMealThumb}" alt="Meal Image">
 				${
-					meal.strCategory
-						? `<p><strong>Category:</strong> ${meal.strCategory}</p>`
-						: ''
-				}
-				${meal.strArea ? `<p><strong>Area:</strong> ${meal.strArea}</p>` : ''}
+          meal.strCategory
+            ? `<p><strong>Category:</strong> ${meal.strCategory}</p>`
+            : ""
+        }
+				${meal.strArea ? `<p><strong>Area:</strong> ${meal.strArea}</p>` : ""}
 				${
-					meal.strTags
-						? `<p><strong>Tags:</strong> ${meal.strTags
-								.split(',')
-								.join(', ')}</p>`
-						: ''
-				}
+          meal.strTags
+            ? `<p><strong>Tags:</strong> ${meal.strTags
+                .split(",")
+                .join(", ")}</p>`
+            : ""
+        }
 				<h5>Ingredients:</h5>
 				<ul>
-					${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+					${ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")}
 				</ul>
 			</div>
 			<div class="columns seven">
@@ -82,8 +72,8 @@ function createMeal(meal){
 			</div>
 		</div>
 		${
-			meal.strYoutube
-				? `
+      meal.strYoutube
+        ? `
 		<div class="row">
 			<h5>Video Recipe</h5>
 			<div class="videoWrapper">
@@ -92,12 +82,9 @@ function createMeal(meal){
 				</iframe>
 			</div>
 		</div>`
-				: ''
-		}
+        : ""
+    }
 	`;
 
-	meal_container.innerHTML = newInnerHTML;
-};
-
-
-
+  meal_container.innerHTML = newInnerHTML;
+}
